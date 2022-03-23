@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>teste</title>
-</head>
-<body>
-    <h1>Funcionou</h1>
 
-</body>
-</html>
+<ul>
+{% for post in object_list %}
+    <li><a href="{% url 'post_detail' post.pk %}">{{ post.titulo }}</a> - {{ post.autor.first_name }} {{ post.autor.last_name }}<br/body>
+    {{ post.body }}</li>
+
+{% endfor %}
+</ul>
