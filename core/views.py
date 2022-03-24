@@ -19,3 +19,4 @@ class AddPostView(CreateView):
     template_name = 'add_post.html'
     fields = ['autor', 'titulo', 'body']
     success_url = reverse_lazy('index')
+
