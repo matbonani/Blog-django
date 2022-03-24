@@ -2,6 +2,7 @@ from django.views.generic import ListView, DetailView, CreateView
 from django.urls import reverse_lazy
 
 from .models import Post
+from .forms import PostForm
 
 
 class IndexView(ListView):
@@ -16,7 +17,8 @@ class PostDetailView(DetailView):
 
 class AddPostView(CreateView):
     model = Post
+    form_class = PostForm
     template_name = 'add_post.html'
-    fields = ['autor', 'titulo', 'body']
+    # fields = ['autor', 'titulo', 'body']
     success_url = reverse_lazy('index')
 
