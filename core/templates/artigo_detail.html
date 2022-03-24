@@ -3,11 +3,13 @@
 
 
 {% block content %}
+
 <h1>{{ post.titulo }}</h1>
-<small>By : {{ post.autor.first_name }} {{ post.autor.last_name }} </small><br>
+<small>By : {{ post.autor.first_name }} {{ post.autor.last_name }} - <a href="{% url 'atualizando' post.pk %}">(Edit)</a></small><br>
 <hr>
 <br>
 {{ post.body }}
 <br><br>
 <a href="{% url 'index' %}" class="btn btn-secondary">Voltar</a>
+
 {% endblock %}
