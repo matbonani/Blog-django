@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>{{ post.title }}</h1>
-    <small>By : {{ post.autor.first_name }} {{ post.autor.last_name }} </small><br>
-    <hr>
-    <br>
-    {{ post.body }}
-    <br><br>
-    <a href="{% url 'index' %}">Voltar</a>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}{{ post.titulo }}{% endblock %}
+
+
+{% block content %}
+<h1>{{ post.titulo }}</h1>
+<small>By : {{ post.autor.first_name }} {{ post.autor.last_name }} </small><br>
+<hr>
+<br>
+{{ post.body }}
+<br><br>
+<a href="{% url 'index' %}" class="btn btn-secondary">Voltar</a>
+{% endblock %}
