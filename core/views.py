@@ -1,5 +1,5 @@
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 
 from .models import Post
 from .forms import PostForm, EditForm
@@ -29,4 +29,6 @@ class UpdatePostView(UpdateView):
     template_name = 'atualizando.html'
     # fields = ['titulo', 'body']
     success_url = reverse_lazy('index')
+
+
 
