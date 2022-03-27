@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 class Base(models.Model):
     criacao = models.DateField('Criação', auto_now_add=True)
     atualizacao = models.DateField('Atualização', auto_now='True')
+    hora = models.TimeField('horario', auto_now=True)
 
     class Meta:
         abstract = True

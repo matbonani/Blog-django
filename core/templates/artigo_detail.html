@@ -9,7 +9,8 @@ By : {{ post.autor.first_name }} {{ post.autor.last_name }} - {{ post.criacao }}
 <small>
 <a href="{% url 'update_post' post.pk %}">(Edit)</a>
 <a href="{% url 'delete_post' post.pk %}">(Delete)</a>
-
+<br>
+Última atualização {{ post.criacao }} as {{ post.hora }}
 
 </small>
 
