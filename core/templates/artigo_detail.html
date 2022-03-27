@@ -5,7 +5,7 @@
 {% block content %}
 
 <h1>{{ post.titulo }}</h1>
-By : {{ post.autor.first_name }} {{ post.autor.last_name }} - 
+By : {{ post.autor.first_name }} {{ post.autor.last_name }} - {{ post.criacao }} -
 <small>
 <a href="{% url 'update_post' post.pk %}">(Edit)</a>
 <a href="{% url 'delete_post' post.pk %}">(Delete)</a>
