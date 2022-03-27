@@ -15,7 +15,7 @@ class PostForm(forms.ModelForm):
         }
 
 
-class EditForm(forms.ModelForm):
+class UpdateForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('titulo', 'body')
