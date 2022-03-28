@@ -8,8 +8,8 @@ from .forms import PostForm, UpdateForm
 class IndexView(ListView):
     model = Post
     template_name = 'index.html'
-    # ordering = ['-id']
-    ordering = ['-hora']
+    ordering = ['-id']
+    # ordering = ['hora']
 
 
 class PostDetailView(DetailView):
