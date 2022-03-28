@@ -4,24 +4,26 @@
 
 {% block content %}
 
-<h1>{{ post.titulo }}</h1>
-By : {{ post.autor.first_name }} {{ post.autor.last_name }}  
-<small>
-{% if user.is_authenticated %}
-	- <a href="{% url 'update_post' post.pk %}">(Edit)</a>
-	<a href="{% url 'delete_post' post.pk %}">(Delete)</a>
-{% endif %}
-<br>
-Última atualização {{ post.criacao }} as {{ post.hora }}
 
+<h1>{{ post.titulo }}</h1>
+By : {{ post.autor }} 
+
+<small>
+	{% if user.is_authenticated %}
+		{% if user.id == post.autor.id %}
+			- <a href="{% url 'update_post' post.pk %}">(Edit)</a>
+			<a href="{% url 'delete_post' post.pk %}">(Delete)</a>
+		{% endif %}
+	{% endif %}
+	<br>
+	Última atualização {{ post.criacao }} as {{ post.hora }}
 </small>
 
 <br>
-
 <hr>
 
 <br>
-{{ post.body| }}
+{{ post.body }}
 <br><br>
 <a href="{% url 'index' %}" class="btn btn-secondary">Voltar</a>
 

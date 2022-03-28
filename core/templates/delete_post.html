@@ -2,24 +2,30 @@
 {% block title %}Delete Post{% endblock %}
 
 {% block content %}
+
+
 {% if user.is_authenticated %}
-    <h1>Delete Post...</h1>
-    <br><br>
-    <h3>{{ post.titulo }}</h3>
-    <h2>{{ post.body }}</h2>
+    {% if user.id == post.autor.id %}
+        <h1>Delete Post...</h1>
+        <br><br>
+        <h3>{{ post.titulo }}</h3>
+        <h2>{{ post.body }}</h2>
 
 
-    <br>
-    <div class="form-group">
-        <form method="POST">
-            {% csrf_token %}
+        <br>
+        <div class="form-group">
+            <form method="POST">
+                {% csrf_token %}
 
-            <button class="btn btn-secondary">Delete!</button>
-        </form>
-    </div>
+                <button class="btn btn-secondary">Delete!</button>
+            </form>
+        </div>
+    {% else %}
+        Permissão negada! É necessaria autenticação via Login !!!
+    {% endif %}
+
 {% else %}
-
-Permissão negada! É necessaria autenticação via Login !!!
+    Permissão negada! É necessaria autenticação via Login !!!
 {% endif %}
 
 
