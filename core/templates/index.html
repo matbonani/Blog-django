@@ -3,7 +3,7 @@
 <h1>Post</h1>
 <ul>
 {% for post in object_list %}
-    <li><a href="{% url 'post_detail' post.pk %}">{{ post.titulo }}</a> - {{ post.autor.first_name }} {{ post.autor.last_name }} - {{ post.criacao }} <br/body>
+    <li><a href="{% url 'post_detail' post.pk %}">{{ post.titulo }}</a> - {{ post.autor }} - {{ post.criacao }} <br/body>
     {{ post.body|slice:"200" }} ...</li>
 
 {% endfor %}
