@@ -14,15 +14,22 @@ class IndexView(ListView):
     # ordering = ['hora']
 
 
-class PostDetailView(DetailView):
+class DetailPostView(DetailView):
     model = Post
     template_name = 'artigo_detail.html'
 
     def get_context_data(self, *args, **kwargs):
-        context = super(PostDetailView, self).get_context_data(**kwargs)
+        context = super(DetailPostView, self).get_context_data(**kwargs)
+
         stuf = get_object_or_404(Post, id=self.kwargs['pk'])
         total_likes = stuf.total_likes()
+
+        liked = False
+        if stuf.likes.filter(id=self.request.user.id).exists():
+            liked = True
+
         context['total_likes'] = total_likes
+        context['liked'] = liked
         return context
 
 
@@ -50,5 +57,11 @@ class DeletePostView(DeleteView):
 
 def LikeView(request, pk):
     post = get_object_or_404(Post, id=request.POST.get('post_id'))
-    post.likes.add(request.user)
+    liked = False
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+        liked = False
+    else:
+        post.likes.add(request.user)
+        liked = True
     return HttpResponseRedirect(reverse('post_detail', args=[str(pk)]))
