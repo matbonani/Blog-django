@@ -1,6 +1,6 @@
 from django.db import models
-
 from django.contrib.auth.models import User
+from ckeditor.fields import RichTextField
 
 
 class Base(models.Model):
@@ -14,9 +14,11 @@ class Base(models.Model):
 
 
 class Post(Base):
-    titulo = models.CharField(max_length=255)
+    titulo = models.CharField('Título', max_length=255)
     autor = models.ForeignKey(User, default=User, on_delete=models.CASCADE)
-    body = models.TextField()
+    body = RichTextField('Post', blank=True, null=True)
+    # body = models.TextField()
+    snippet = models.CharField('Sobre oque é ?', max_length=255)
     likes = models.ManyToManyField(User, related_name='blog_post')
 
     def total_likes(self):

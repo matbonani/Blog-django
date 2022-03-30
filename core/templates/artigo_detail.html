@@ -23,13 +23,14 @@
 	<hr>
 
 	<br>
-	{{ post.body }}
+	{{ post.body|safe }}
 	<br><br>
 	<a href="{% url 'index' %}" class="btn btn-secondary">Voltar</a>
 
 
 	<br><br>
 	<hr>
+
 
 
 	<form action="{% url 'like_post' post.pk %}" method="POST">
