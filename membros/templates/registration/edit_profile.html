@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Edit Profile...{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    <h1>Edit Profile</h1>
+    <br><br>
+
+
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-secondary">Cadastre-se</button>
+        </form>
+    </div>
+{% else %}
+    Você já está logado !!!
+{% endif %}
+
+
+{% endblock %}
