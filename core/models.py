@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
+from stdimage import StdImageField
 
 
 class Base(models.Model):
@@ -8,13 +9,13 @@ class Base(models.Model):
     atualizacao = models.DateField('Atualização', auto_now='True')
     hora = models.TimeField('horario', auto_now=True)
 
-
     class Meta:
         abstract = True
 
 
 class Post(Base):
     titulo = models.CharField('Título', max_length=255)
+    header_title = StdImageField(null=True, blank=True, upload_to='images/', variations={'thumb': {'width': 500, 'height': 550, 'crop': True}})
     autor = models.ForeignKey(User, default=User, on_delete=models.CASCADE)
     body = RichTextField('Post', blank=True, null=True)
     # body = models.TextField()

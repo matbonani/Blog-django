@@ -23,6 +23,12 @@
 	<hr>
 
 	<br>
+	{% if post.header_title %}
+		<img src="{{ post.header_title.url }}">
+	{% endif %}
+
+
+	<br><br>
 	{{ post.body|safe }}
 	<br><br>
 	<a href="{% url 'index' %}" class="btn btn-secondary">Voltar</a>
