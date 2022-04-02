@@ -6,6 +6,9 @@
 {% if user.is_authenticated %}
     <h1>Edit Profile</h1>
     <br><br>
+    
+    {{ user.profile.bio }}
+    <br><br>
 
 
     <div class="form-group">
@@ -16,7 +19,7 @@
         </form>
     </div>
 {% else %}
-    Você já está logado !!!
+    Você não está logado !!!
 {% endif %}
 
 

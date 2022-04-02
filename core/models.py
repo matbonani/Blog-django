@@ -13,9 +13,22 @@ class Base(models.Model):
         abstract = True
 
 
+class Profile(Base):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    bio = models.TextField()
+    profile_pic = StdImageField(null=True, blank=True, upload_to='images/profile', variations={'thumb': {'width': 500, 'height': 550}})
+    facebook = models.CharField(max_length=255, blank=True, null=True)
+    twitter = models.CharField(max_length=255, blank=True, null=True)
+    instagram = models.CharField(max_length=255, blank=True, null=True)
+    linkedin = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return str(self.user)
+
+
 class Post(Base):
     titulo = models.CharField('Título', max_length=255)
-    header_title = StdImageField(null=True, blank=True, upload_to='images/', variations={'thumb': {'width': 500, 'height': 550, 'crop': True}})
+    header_title = StdImageField(null=True, blank=True, upload_to='images/')
     autor = models.ForeignKey(User, default=User, on_delete=models.CASCADE)
     body = RichTextField('Post', blank=True, null=True)
     # body = models.TextField()

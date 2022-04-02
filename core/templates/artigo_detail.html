@@ -24,7 +24,7 @@
 
 	<br>
 	{% if post.header_title %}
-		<img src="{{ post.header_title.url }}">
+		<img src="{{ post.header_title.url }}" width="650" height="500">
 	{% endif %}
 
 
@@ -58,6 +58,42 @@
 		- {{ total_likes }} Likes
 
 	</form>
+<br><br>
+<div class="card mb-3">
+	<div class="row no-gutters">
+		<div class="col-md-2">
+			<img src="{{ post.autor.profile.profile_pic.url }}" class="card-img">
+		</div>
+		<div class="col-md-10">
+			<div class="card-body">
+				<h5 class="card-title">{{ post.autor }}</h5>
+
+				<p class="small text-muted">
+					{% if post.autor.profile.facebook %}
+						| <a href="{{ post.autor.profile.facebook }}">FaceBook </a> 
+					{% endif %}
+
+					{% if post.autor.profile.twitter %}
+						| <a href="{{ post.autor.profile.twitter }}">Twitter</a> 
+					{% endif %}
+
+					{% if post.autor.profile.instagram %}
+						| <a href="{{ post.autor.profile.instagram }}">Instagram</a> 
+					{% endif %}
+
+					{% if post.autor.profile.linkedin %}
+						| <a href="{{ post.autor.profile.linkedin }}">Linkedin</a>
+					{% endif %} 
+				</p>
+
+				<p class="card-text">{{ post.autor.profile.bio }}</p>
+
+				<p class="card-text"><small class="text-muted">Last Update</small></p>		
+			</div>
+		</div>
+	</div>
+</div>
 
 
 {% endblock %}
+
