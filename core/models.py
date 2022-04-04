@@ -16,7 +16,7 @@ class Base(models.Model):
 class Profile(Base):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     bio = models.TextField()
-    profile_pic = StdImageField(null=True, blank=True, upload_to='images/profile', variations={'thumb': {'width': 500, 'height': 550}})
+    profile_pic = StdImageField(null=True, blank=True, upload_to='images/profile')
     facebook = models.CharField(max_length=255, blank=True, null=True)
     twitter = models.CharField(max_length=255, blank=True, null=True)
     instagram = models.CharField(max_length=255, blank=True, null=True)

@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}{{ post.titulo }}{% endblock %}
 
 
 {% block content %}
 
 
-	<h1>{{ post.titulo }}</h1>
+	<h1>{{ post.titulo }} - {{ total_likes }} Likes</h1>
 	By : {{ post.autor }} 
 
 	<small>
@@ -50,11 +51,11 @@
 
 	{% else %}
 		<small>
-			<a href="{% url 'login' %}">Login</a>
+			<a class="btn btn-warning" href="{% url 'login' %}">Login</a>
 			para Likes
 		</small>
 	{% endif %}
-
+		<a class="btn btn-success">{{ total_likes }} Likes</a>
 		- {{ total_likes }} Likes
 
 	</form>
@@ -62,7 +63,11 @@
 <div class="card mb-3">
 	<div class="row no-gutters">
 		<div class="col-md-2">
+{% if post.autor.profile.profile_pic %}
 			<img src="{{ post.autor.profile.profile_pic.url }}" class="card-img">
+{% else %}
+			<img src="{% static 'core/images/anonimo.png' %}" class="card-img">
+{% endif %}
 		</div>
 		<div class="col-md-10">
 			<div class="card-body">
