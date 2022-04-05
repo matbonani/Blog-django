@@ -1,10 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="card mb-3">
+    <div class="row no-gutters">
+        <div class="col-md-2">
+{% if page_user.profile_pic %}
+        <a href="{% url 'show_profile_page' page_user.id %}">
+            <img src="{{ page_user.profile_pic.url }}" class="card-img">
+        </a>
+{% else %}
+            <img src="{% static 'core/images/anonimo.png' %}" class="card-img">
+        </a>
+{% endif %}
+        </div>
+        <div class="col-md-10">
+            <div class="card-body">
+                <h5 class="card-title">{{ page_user.autor }}</h5>
+
+                <p class="small text-muted">
+
+                    {% if page_user.profile.facebook %}
+                        | <a href="{{ page_user.facebook }}">FaceBook </a> 
+                    {% endif %}
+
+                    {% if page_user.twitter %}
+                        | <a href="{{ page_user.twitter }}">Twitter</a> 
+                    {% endif %}
+
+                    {% if page_user.instagram %}
+                        | <a href="{{ page_user.instagram }}">Instagram</a> 
+                    {% endif %}
+
+                    {% if page_user.linkedin %}
+                        | <a href="{{ page_user.linkedin }}">Linkedin</a>
+                    {% endif %} 
+                </p>
+
+                <p class="card-text">{{ page_user.bio }}</p>
+
+                    
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

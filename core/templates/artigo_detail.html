@@ -64,9 +64,13 @@
 	<div class="row no-gutters">
 		<div class="col-md-2">
 {% if post.autor.profile.profile_pic %}
+		<a href="{% url 'show_profile_page' post.autor.profile.id %}">
 			<img src="{{ post.autor.profile.profile_pic.url }}" class="card-img">
+		</a>
 {% else %}
+		<a href="{% url 'show_profile_page' post.autor.profile.id %}">
 			<img src="{% static 'core/images/anonimo.png' %}" class="card-img">
+		</a>
 {% endif %}
 		</div>
 		<div class="col-md-10">
@@ -74,6 +78,7 @@
 				<h5 class="card-title">{{ post.autor }}</h5>
 
 				<p class="small text-muted">
+
 					{% if post.autor.profile.facebook %}
 						| <a href="{{ post.autor.profile.facebook }}">FaceBook </a> 
 					{% endif %}
@@ -93,7 +98,7 @@
 
 				<p class="card-text">{{ post.autor.profile.bio }}</p>
 
-				<p class="card-text"><small class="text-muted">Last Update</small></p>		
+					
 			</div>
 		</div>
 	</div>
