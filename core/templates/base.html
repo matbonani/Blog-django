@@ -27,18 +27,36 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'add_post' %}">Add Post</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link">{{ user.username }}</a>
-        </li>
       </ul>
-
+        
       <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ user.username }}</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'show_profile_page' user.profile.id %}">Profile</a>
+            <a class="dropdown-item" href="{% url 'edit_profile_page' user.profile.id %}">Profile edit</a>
+            <a class="dropdown-item" href="{% url 'edit_profile' %}">Settings</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+          </div>
+        </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'edit_profile' %}">Editar Perfil</a>
+          <a class="nav-link" href="#"></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+          <a class="nav-link" href="#"></a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+
       </ul>
         {% else %}
 
@@ -49,13 +67,16 @@
       </ul>
 
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'login' %}">Login</a>
-        </li>
+
         <li class="nav-item">
           <a class="nav-link" href="{% url 'registro' %}">Cadastre-se</a>
         </li>
-      </ul>
+      
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+        </ul>
+        
 
       {% endif %}
 
