@@ -1,10 +1,10 @@
 from django.views import generic
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.contrib.auth.views import PasswordChangeView
-from django.views.generic import DetailView
+from django.views.generic import DetailView, CreateView
 from django.shortcuts import render, get_object_or_404
 
-from .forms import SignUpForm, EditProfileForm, PasswordChangingForm
+from .forms import SignUpForm, EditProfileForm, PasswordChangingForm, ProfilePageForm
 from core.models import Profile
 
 
@@ -51,3 +51,13 @@ class EditProfilePageView(generic.UpdateView):
     template_name = 'registration/edit_profile_page.html'
     fields = ['bio', 'profile_pic', 'facebook', 'twitter', 'instagram', 'linkedin']
     success_url = reverse_lazy('index')
+
+
+class CreateProfilePageView(CreateView):
+    model = Profile
+    form_class = ProfilePageForm
+    template_name = 'registration/create_user_profile_page.html'
+    success_url = reverse_lazy('index')
+    # fields = '__all__'
+
+
