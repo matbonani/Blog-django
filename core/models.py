@@ -40,3 +40,13 @@ class Post(Base):
 
     def __str__(self):
         return self.titulo + ' | ' + str(self.autor)
+
+
+class Comments(Base):
+    post = models.ForeignKey(Post, related_name="comments", on_delete=models.CASCADE)
+    autor = models.ForeignKey(User, default=User, on_delete=models.CASCADE)
+    body = models.TextField('Comentário')
+
+    def __str__(self):
+        return '%s - %s' % (self.post.titulo, self.autor)
+

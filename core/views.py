@@ -2,8 +2,8 @@ from django.urls import reverse_lazy, reverse
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 
-from .models import Post
-from .forms import PostForm, UpdateForm
+from .models import Post, Comments
+from .forms import PostForm, UpdateForm, AddCommentForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 
@@ -65,3 +65,23 @@ def LikeView(request, pk):
         post.likes.add(request.user)
         liked = True
     return HttpResponseRedirect(reverse('post_detail', args=[str(pk)]))
+
+
+class AddCommentsView(CreateView):
+    model = Comments
+    form_class = AddCommentForm
+    template_name = 'registration/add_comments.html'
+    # fields = ('__all__')
+    success_url = reverse_lazy('index')
+
+    def form_valid(self, form):
+        form.instance.post_id = self.kwargs['pk']
+        return super().form_valid(form)
+
+
+
+
+
+
+
+

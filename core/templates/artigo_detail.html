@@ -60,6 +60,8 @@
 
 	</form>
 <br><br>
+
+<!--Seção Profile -->
 <div class="card mb-3">
 	<div class="row no-gutters">
 		<div class="col-md-2">
@@ -103,6 +105,46 @@
 		</div>
 	</div>
 </div>
+<br>
+{% if not post.comments.all %}
+	<a href="{% url 'add_comment' post.pk %}">+ </a>adicionar um comentário
+	<br>
+	<br>
+	<br>
+{% else %}
+	<br>
+	<a href="{% url 'add_comment' post.pk %}">+ </a>comentário
+	<br>
+	<br>
+	{% for comment in post.comments.all %}
+	<!--Seção comentarios  -->
+	<div class="my-3 p-3 bg-white rounded shadow-sm">
+
+        
+        <div class="media text-muted pt-3">
+	          <img src="#" alt="" class="mr-2 rounded">
+	          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+	            <strong class="d-block text-gray-dark">@{{ comment.autor }}</strong>
+	            {{ comment.body }}
+	          </p>
+        </div>
+
+	</div>
+	{% endfor %}
+	    <small class="d-block text-right mt-3">
+          	<a href="#">Início</a>
+        </small>
+        <small class="d-block text-right mt-3">
+          	<a href="{% url 'add_comment' post.pk %}">+ </a>comentário
+        </small>
+        <br>
+
+{% endif %}
+
+
+<br>
+<br>
+
 
 
 {% endblock %}

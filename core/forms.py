@@ -1,6 +1,6 @@
 from django import forms
 
-from.models import Post
+from.models import Post, Comments
 
 
 class PostForm(forms.ModelForm):
@@ -26,4 +26,14 @@ class UpdateForm(forms.ModelForm):
             'titulo': forms.TextInput(attrs={'class': 'form-control'}),
             'body': forms.Textarea(attrs={'class': 'form-control'}),
             'snippet': forms.TextInput(attrs={'class': 'form-control'}),
+        }
+
+
+class AddCommentForm(forms.ModelForm):
+    class Meta:
+        model = Comments
+        fields = ('body',)
+        widgets = {
+            # 'autor': forms.Select(attrs={'class': 'form-control'}),
+            'body': forms.Textarea(attrs={'class': 'form-control'}),
         }

@@ -56,3 +56,5 @@ class ProfilePageForm(forms.ModelForm):
             'instagram': forms.TextInput(attrs={'class': 'form-control'}),
             'linkedin': forms.TextInput(attrs={'class': 'form-control'})
         }
+
+
