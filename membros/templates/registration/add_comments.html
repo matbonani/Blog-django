@@ -3,9 +3,9 @@
 
 {% block content %}
 
+
 {% if user.is_authenticated %}
     <h1>Add Comments...</h1>
-    {{ user.id }}
 
     <br><br>
 
@@ -17,10 +17,6 @@
             <button class="btn btn-secondary">comments</button>
         </form>
     </div>
-    <script>
-        var name = '{{ user.id }}';
-        document.getElementById('elder').value = name;
-    </script>
 
     
 {% else %}

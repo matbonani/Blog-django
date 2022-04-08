@@ -44,7 +44,7 @@ class Post(Base):
 
 class Comments(Base):
     post = models.ForeignKey(Post, related_name="comments", on_delete=models.CASCADE)
-    autor = models.ForeignKey(User, default=User, on_delete=models.CASCADE)
+    autor = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField('Comentário')
 
     def __str__(self):
