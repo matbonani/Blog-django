@@ -7,13 +7,32 @@
 <br><br>
 
 
-<div class="form-group">
+
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-secondary">Login</button>
-    </form>
-</div>
+        <div class="row">
+            <div class="form-group col-md-3">
+                <input type="text" class="form-control" name="username" placeholder="usuário">
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="form-group col-md-3">
+                <input type="password" class="form-control" name="password" placeholder="senha">
+            </div>
+        </div>
+        </div>
+        <div class="container">
+
+        <button class="btn btn-primary">login</button> 
+        
+        </div>
+
+
+
+        
+    </form>
+    
+</div>
 
 {% endblock %}
