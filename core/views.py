@@ -80,7 +80,7 @@ class AddCommentsView(CreateView):
 
     def form_valid(self, form):
         form.instance.post_id = self.kwargs['pk']
-        form.instance.autor_id = self.request.user.id
+        form.instance.autor_id = self.request.user.profile.id
         return super().form_valid(form)
 
     def get_success_url(self):
