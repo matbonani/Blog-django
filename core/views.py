@@ -40,6 +40,10 @@ class AddPostView(CreateView):
     # fields = ['autor', 'titulo', 'body']
     success_url = reverse_lazy('index')
 
+    def form_valid(self, form):
+        form.instance.autor_id = self.request.user.id
+        return super().form_valid(form)
+
 
 class UpdatePostView(UpdateView):
     model = Post
