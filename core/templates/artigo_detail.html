@@ -5,7 +5,7 @@
 
 {% block content %}
 
-
+<!-- Seção do Post -->
 	<h1>{{ post.titulo }} - {{ total_likes }} Likes</h1>
 	By : {{ post.autor }} 
 
@@ -37,9 +37,12 @@
 
 	<br><br>
 	<hr>
+<!-- fim / Seção do Post -->
 
 
 
+
+<!-- Seção do Like -->
 	<form action="{% url 'like_post' post.pk %}" method="POST">
 		{% csrf_token %}
 	{% if user.is_authenticated %}
@@ -60,6 +63,10 @@
 
 	</form>
 <br><br>
+<!-- fim-Seção do Like -->
+
+
+
 
 <!--Seção Profile -->
 <div class="card mb-3">
@@ -106,6 +113,12 @@
 	</div>
 </div>
 <br>
+<!-- fim-Seção Profile -->
+
+
+
+
+<!-- Seção Comentários -->
 {% if not post.comments.all %}
 	<a href="{% url 'add_comment' post.pk %}">+ </a>adicionar um comentário
 	<br>
@@ -132,7 +145,7 @@
 	</div>
 	{% endfor %}
 	    <small class="d-block text-right mt-3">
-          	<a href="#">Início</a>
+          	<a href="{% url 'post_detail' post.pk %}">Início</a>
         </small>
         <small class="d-block text-right mt-3">
           	<a href="{% url 'add_comment' post.pk %}">+ </a>comentário
@@ -140,7 +153,7 @@
         <br>
 
 {% endif %}
-
+<!-- fim-Seção Comentários -->
 
 <br>
 <br>

@@ -3,8 +3,10 @@
 <h1>Post</h1>
 <ul>
 {% for post in object_list %}
+<hr>
     <li><a href="{% url 'post_detail' post.pk %}">{{ post.titulo }}</a> - {{ post.autor }} - {{ post.criacao }} <br/body>
     {{ post.snippet }}</li>
+    <hr>
 
 {% endfor %}
 </ul>
