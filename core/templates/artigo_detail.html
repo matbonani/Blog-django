@@ -4,16 +4,16 @@
 
 
 {% block content %}
-
+<br>
 <!-- Seção do Post -->
 	<h1>{{ post.titulo }}</h1>
-	By : {{ post.autor }} 
+	by:  {{ post.autor }} 
 
 	<small>
 		{% if user.is_authenticated %}
 			{% if user.id == post.autor.id %}
-				- <a href="{% url 'update_post' post.pk %}">(Edit)</a>
-				<a href="{% url 'delete_post' post.pk %}">(Delete)</a>
+				- <a href="{% url 'update_post' post.pk %}"> (Edit) </a>
+				<a href="{% url 'delete_post' post.pk %}"> (Delete) </a>
 			{% endif %}
 		{% endif %}
 		<br>
@@ -32,11 +32,7 @@
 	<br><br>
 	{{ post.body|safe }}
 	<br><br>
-	<a href="{% url 'index' %}" class="btn btn-secondary">Voltar</a>
 
-
-	<br><br>
-	<hr>
 <!-- fim / Seção do Post -->
 
 
@@ -45,24 +41,25 @@
 <!-- Seção do Like -->
 	<form action="{% url 'like_post' post.pk %}" method="POST">
 		{% csrf_token %}
-	{% if user.is_authenticated %}
-		{% if liked %}
-			<button type="submit", name='post_id', value="{{ post.id }}" class="btn btn-danger btn-sm">Unlike</button> 
+		{% if user.is_authenticated %}
+			{% if liked %}
+
+				<button type="submit", name="post_id", value="{{ post.id }}" class="btn btn-primary">
+  					unlike <span class="badge badge-light">{{ total_likes }}</span>
+				</button>
+			{% else %}
+				<button type="submit", name="post_id", value="{{ post.id }}" class="btn btn-primary">
+  					like <span class="badge badge-light">{{ total_likes }}</span>
+				</button>
+			{% endif %}
 		{% else %}
-			<button type="submit", name='post_id', value="{{ post.id }}" class="btn btn-primary btn-sm">Like</button> 
+			<a href="{% url 'login' %}" class="btn btn-primary">
+  				like <span class="badge badge-light">{{ total_likes }}</span>
+			</a>
 		{% endif %}
-
-	{% else %}
-		<small>
-			<a class="btn btn-warning" href="{% url 'login' %}">Login</a>
-			para Likes
-		</small>
-	{% endif %}
-		<a class="btn btn-success btn-sm">{{ total_likes }} Likes</a>
-
-
 	</form>
-<br><br>
+<br>
+<hr>
 <!-- fim-Seção do Like -->
 
 
@@ -71,10 +68,10 @@
 <!--Seção Profile -->
 <div class="card mb-3">
 	<div class="row no-gutters">
-		<div class="col-md-2">
+		<div class="col-md-3">
 {% if post.autor.profile.profile_pic %}
 		<a href="{% url 'show_profile_page' post.autor.profile.id %}">
-			<img src="{{ post.autor.profile.profile_pic.url }}" class="card-img">
+			<img src="{{ post.autor.profile.profile_pic.url }}" height="250" class="card-img">
 		</a>
 {% else %}
 		<a href="{% url 'show_profile_page' post.autor.profile.id %}">
@@ -82,9 +79,9 @@
 		</a>
 {% endif %}
 		</div>
-		<div class="col-md-10">
+		<div class="col-md-8">
 			<div class="card-body">
-				<h5 class="card-title">{{ post.autor }}</h5>
+				<h3 class="card-title">{{ post.autor }}</h3>
 
 				<p class="small text-muted">
 
@@ -145,7 +142,7 @@
 	</div>
 	{% endfor %}
 	    <small class="d-block text-right mt-3">
-          	<a href="{% url 'post_detail' post.pk %}">Início</a>
+          	<a href="{% url 'index'%}">Início</a>
         </small>
         <small class="d-block text-right mt-3">
           	<a href="{% url 'add_comment' post.pk %}">+ </a>comentário

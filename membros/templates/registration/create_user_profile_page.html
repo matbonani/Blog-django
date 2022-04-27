@@ -15,10 +15,7 @@
             <button class="btn btn-secondary">create</button>
         </form>
     </div>
-        <script>
-        var name = '{{ user.id }}';
-        document.getElementById('elder').value = name;
-    </script>
+
 {% else %}
     Permissão negada! É necessaria autenticação via Login !!!
 {% endif %}

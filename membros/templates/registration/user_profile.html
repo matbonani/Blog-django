@@ -1,26 +1,26 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
+<br><br>
 <div class="card mb-3">
     <div class="row no-gutters">
-        <div class="col-md-2">
+        <div class="col-md-3">
 {% if page_user.profile_pic %}
         <a href="{% url 'show_profile_page' page_user.id %}">
-            <img src="{{ page_user.profile_pic.url }}" class="card-img">
+            <img src="{{ page_user.profile_pic.url }}" height="250" alt="card-img" class="card-img">
         </a>
 {% else %}
             <img src="{% static 'core/images/anonimo.png' %}" class="card-img">
         </a>
 {% endif %}
         </div>
-        <div class="col-md-10">
+        <div class="col-md-8">
             <div class="card-body">
-                <h5 class="card-title">{{ page_user.autor }}</h5>
+                <h4 class="card-title">{{ page_user.user }}</h4>
 
                 <p class="small text-muted">
 
-                    {% if page_user.profile.facebook %}
+                    {% if page_user.facebook %}
                         | <a href="{{ page_user.facebook }}">FaceBook </a> 
                     {% endif %}
 

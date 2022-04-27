@@ -9,13 +9,13 @@
 
 
 {% if post.autor.profile.id %}
-        <a class="btn btn-primary btn-sm" href="{% url 'show_profile_page' post.autor.profile.id %}">@{{ post.autor }}</a>
+        <a class="badge badge-pill badge-primary" href="{% url 'show_profile_page' post.autor.profile.id %}">@{{ post.autor }}</a>
 {% else %}
-        <a class="btn btn-primary btn-sm">@{{ post.autor }}</a>
+        <a class="badge badge-pill badge-primary">@{{ post.autor }}</a>
 {% endif %}
-
+-
 <a class="text-muted " href="{% url 'post_detail' post.pk %}">
-    - {{ post.titulo }} -</a>   
+     {{ post.titulo }} </a>   <small class="d-block text-right">{{ post.criacao }}</small>
 
     <hr>
 
