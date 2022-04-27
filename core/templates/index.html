@@ -1,13 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Post</h1>
+
+
 <ul>
-{% for post in object_list %}
+
 <hr>
-    <li><a href="{% url 'post_detail' post.pk %}">{{ post.titulo }}</a> - {{ post.autor }} - {{ post.criacao }} <br/body>
-    {{ post.snippet }}</li>
+{% for post in object_list %}
+
+
+{% if post.autor.profile.id %}
+        <a class="btn btn-primary btn-sm" href="{% url 'show_profile_page' post.autor.profile.id %}">@{{ post.autor }}</a>
+{% else %}
+        <a class="btn btn-primary btn-sm">@{{ post.autor }}</a>
+{% endif %}
+
+<a class="text-muted " href="{% url 'post_detail' post.pk %}">
+    - {{ post.titulo }} -</a>   
+
     <hr>
 
 {% endfor %}
-</ul>
+ 
+
 {% endblock %}

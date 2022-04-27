@@ -4,7 +4,7 @@ from django.contrib.auth.views import PasswordChangeView
 from django.views.generic import DetailView, CreateView
 from django.shortcuts import render, get_object_or_404
 
-from .forms import SignUpForm, EditProfileForm, PasswordChangingForm, ProfilePageForm
+from .forms import SignUpForm, EditProfileForm, PasswordChangingForm, ProfilePageForm, EditProfilePageForm
 from core.models import Profile
 
 
@@ -48,8 +48,9 @@ class ShowProfilePageView(DetailView):
 
 class EditProfilePageView(generic.UpdateView):
     model = Profile
+    form_class = EditProfilePageForm
     template_name = 'registration/edit_profile_page.html'
-    fields = ['bio', 'profile_pic', 'facebook', 'twitter', 'instagram', 'linkedin']
+    # fields = ['bio', 'profile_pic', 'facebook', 'twitter', 'instagram', 'linkedin']
     success_url = reverse_lazy('index')
 
 

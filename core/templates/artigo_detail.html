@@ -6,7 +6,7 @@
 {% block content %}
 
 <!-- Seção do Post -->
-	<h1>{{ post.titulo }} - {{ total_likes }} Likes</h1>
+	<h1>{{ post.titulo }}</h1>
 	By : {{ post.autor }} 
 
 	<small>
@@ -17,7 +17,7 @@
 			{% endif %}
 		{% endif %}
 		<br>
-		Última atualização {{ post.criacao }} as {{ post.hora }}
+		Última atualização {{ post.atualizacao }} as {{ post.hora }}
 	</small>
 
 	<br>
@@ -58,8 +58,8 @@
 			para Likes
 		</small>
 	{% endif %}
-		<a class="btn btn-success">{{ total_likes }} Likes</a>
-		- {{ total_likes }} Likes
+		<a class="btn btn-success btn-sm">{{ total_likes }} Likes</a>
+
 
 	</form>
 <br><br>

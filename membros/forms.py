@@ -58,3 +58,17 @@ class ProfilePageForm(forms.ModelForm):
         }
 
 
+class EditProfilePageForm(forms.ModelForm):
+
+    class Meta:
+        model = Profile
+        fields = ('bio', 'profile_pic', 'facebook', 'twitter', 'instagram', 'linkedin')
+        widgets = {
+            'bio': forms.Textarea(attrs={'class': 'form-control'}),
+            # 'profile_pic': forms.FileField(attrs={'class': 'form-control'}),
+            'facebook': forms.TextInput(attrs={'class': 'form-control'}),
+            'twitter': forms.TextInput(attrs={'class': 'form-control'}),
+            'instagram': forms.TextInput(attrs={'class': 'form-control'}),
+            'linkedin': forms.TextInput(attrs={'class': 'form-control'})
+        }
+

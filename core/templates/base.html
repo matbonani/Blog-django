@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
   <head>
     <!-- Meta tags Obrigatórias -->
     <meta charset="utf-8">
@@ -10,8 +11,11 @@
 
     <title>{% block title %}Blog !{% endblock %}</title>
   </head>
-  <body>
+  
 
+
+  <body class="bg-light">
+                <!--Section-NavBar -->
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="{% url 'index' %}">Blog !</a>
@@ -67,21 +71,17 @@
           <a class="nav-link" href="{% url 'login' %}">Login</a>
         </li>
         </ul>
-        
-
       {% endif %}
-
-          
-
-    
   </div>
 </nav>
+              <!-- END-Section-NavBar -->
 
+
+  <div class="container">
     <br>
-    <div class="container">
-      {% block content %} 
-      {% endblock %}
-    </div>
+    {% block content %} 
+    {% endblock %}
+  </div>
 
     <!-- JavaScript (Opcional) -->
     <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
